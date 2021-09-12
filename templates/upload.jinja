@@ -1,0 +1,41 @@
+{% extends "base.jinja" %}
+
+{% block subtitle %}
+<h3 class="text-muted">Dashboard - Upload Case Files</h3>
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+  <div class="card-header">
+  Choose a file to upload
+  </div>
+  <div class="card-body">
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="file">File:</label>
+        <input type="file" class="form-control" name="file" id="file" aria-describedby="fileHelp" >
+        <small id="fileHelp" class="form-text text-muted">Only upload PDF or DOCX files</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% if error is not none %}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    {% endif %}
+  </div>
+</div>
+<div class="card">
+<div class="card-header">
+  Uploaded Files
+</div>
+<div class="card-body">
+  <ul>
+    {% for file in files %}
+      <li>
+        <a href="/upload?doc={{file}}">{{file}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

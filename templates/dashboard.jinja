@@ -1,0 +1,39 @@
+{% extends "base.jinja" %}
+
+{% block subtitle %}
+<h3 class="text-muted">Dashboard - Current Cases</h3>
+{% endblock %}
+
+{% block content %}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Title</th>
+      <th scope="col">Lawyer</th>
+      <th scope="col">Damages</th>
+      <th scope="col">Client</th>
+    </thead>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="search" class="sr-only">Search:</label>
+              <input type="text" class="form-control" id="search" name="search" placeholder="Search by Title">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+          </form>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      {% for item in query %}
+        <tr>
+          <td>{{item.title}}</td>
+          <td>{{item.lawyer}}</td>
+          <td>{{item.damages}}</td>
+          <td>{{item.client}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

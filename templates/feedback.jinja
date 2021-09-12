@@ -1,0 +1,26 @@
+{% extends "base.jinja" %}
+
+{% block subtitle %}
+<h3 class="text-muted">Dashboard - Current Cases</h3>
+{% endblock %}
+
+{% block content %}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Message</th>
+    </thead>
+    <tfoot>
+    </tfoot>
+    <tbody>
+      {% for item in query %}
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.message}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
